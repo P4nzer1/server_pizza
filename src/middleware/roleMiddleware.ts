@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 const roleMiddleware = (roles: string[]) => {
-  return (req: Request, res: Response, next: NextFunction): void => {
+  return (req: Request, res: Response, next: NextFunction) => {
     if (!req.user) {
       console.error('Error: req.user is not defined. AuthMiddleware might not have been called.');
       res.status(401).json({ message: 'Authorization required' });

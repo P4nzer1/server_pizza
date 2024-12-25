@@ -8,7 +8,7 @@ import { LoginRequestBody, RefreshTokenRequestBody, SendVerificationCodeRequestB
 export const login = async (
   req: Request<{}, {}, LoginRequestBody>,
   res: Response
-): Promise<void> => {
+) => {
   const { phone, verificationCode } = req.body;
 
   try {
@@ -57,7 +57,7 @@ export const login = async (
 export const sendVerificationCode = async (
   req: Request<{}, {}, SendVerificationCodeRequestBody>,
   res: Response
-): Promise<void> => {
+) => {
   const { phone } = req.body;
 
   try {
@@ -81,7 +81,7 @@ export const sendVerificationCode = async (
 export const logout = async (
   req: Request<{}, {}, RefreshTokenRequestBody>,
   res: Response
-): Promise<void> => {
+) => {
   const { refreshToken } = req.body;
 
   try {
@@ -110,7 +110,7 @@ export const logout = async (
 export const refreshToken = async (
   req: Request<{}, {}, RefreshTokenRequestBody>,
   res: Response
-): Promise<void> => {
+) => {
   const { refreshToken } = req.body;
 
   try {

@@ -1,21 +1,11 @@
 import cors from 'cors';
 
-const allowedOrigins = [
-  'https://trusteddomain.com',
-  'https://anothertrusteddomain.com',
-  'http://localhost:6000',
-  'http://localhost:5000',
-  'http://localhost:3000',
-];
+const corsMiddleware = cors({
+  origin: '*', // Разрешает доступ со всех доменов. Для большей безопасности замените на конкретный домен (например, http://localhost:3000).
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Разрешенные методы.
+  allowedHeaders: ['Content-Type', 'Authorization'], // Разрешенные заголовки.
+  credentials: true, // Если нужны куки или авторизация.
+});
 
-const corsOptions: cors.CorsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); 
-      callback(new Error('Not allowed by CORS')); 
-    }
-  },
-  credentials: true, 
-};
+export default corsMiddleware;
 
-export default cors(corsOptions);
